@@ -1,41 +1,34 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# --- Зависимости (Никогда не коммитим!) ---
+node_modules/
+.pnp
+.pnp.js
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# --- Файлы блокировки (Коммитим ТОЛЬКО один, остальные игнорируем) ---
+# Если используете npm -> оставляем package-lock.json, удаляем остальные
+# Если yarn -> оставляем yarn.lock
+# Для чистоты учебного проекта часто игнорируют все, но стандарт - коммитить один лок-файл.
+yarn.lock
+pnpm-lock.yaml
 
-# testing
-/coverage
-
-# next.js
-/.next/
+# --- Сборки и генерируемые файлы ---
+# Next.js
+.next/
 /out/
 
-# production
-/build
+# TypeScript / Node.js Build
+dist/
+build/
+*.tsbuildinfo
 
-# misc
-.DS_Store
-*.pem
+# --- Переменные окружения (Безопасность!) ---
+.env
+.env.local
+.env.*.local
 
-# debug
+# --- Логи и ОС ---
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
