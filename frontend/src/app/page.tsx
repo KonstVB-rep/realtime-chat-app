@@ -1,3 +1,4 @@
+import { LogoutButton } from "@/app/shared/ui/components/LogoutButton";
 import UserInfo from "@/app/shared/ui/components/UserInfo";
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
@@ -22,6 +23,7 @@ export default function Home() {
         <UserInfo />
         <Show when="signed-in">
           <UserButton />
+          <LogoutButton/>
         </Show>
       </main>
     </div>
