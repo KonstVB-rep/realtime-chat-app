@@ -6,6 +6,7 @@ import { clerkMiddleware, clerkClient, getAuth } from '@clerk/express'
 import fs from 'fs'
 import path from 'path'
 import job from "./lib/cron.js";
+import clerkWebhook from "./webhooks/clerk.webhook.js";
 
 const app = express()
 
@@ -43,6 +44,7 @@ app.get('/api/profile', (req, res) => {
 app.get('/revival', (req, res) => {
   res.status(200).json({ ok: true });
 });
+app.use("/api/webhooks/clerk",express.raw({type:"application/json"}), clerkWebhook);
 
 // app.use("/api/auth", );
 // app.use("/api/messages", );
@@ -71,6 +73,8 @@ async function startServer() {
             console.log(`Сервер запущен успешно на порту ${PORT}!`);
             console.log(process.env.NODE_ENV)
         });
+
+
 
        if(process.env.NODE_ENV === "production") job.start();
        
