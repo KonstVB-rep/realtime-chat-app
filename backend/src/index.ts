@@ -15,6 +15,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL
 
 const publicDir = path.join(process.cwd(), 'public');
 
+app.use("/api/webhooks/clerk",express.raw({type:"application/json"}), clerkWebhook);
 
 app.use(express.json())
 app.use(cors(
@@ -44,7 +45,7 @@ app.get('/api/profile', (req, res) => {
 app.get('/revival', (req, res) => {
   res.status(200).json({ ok: true });
 });
-app.use("/api/webhooks/clerk",express.raw({type:"application/json"}), clerkWebhook);
+
 
 // app.use("/api/auth", );
 // app.use("/api/messages", );
