@@ -3,7 +3,7 @@ import http from "node:http";
 import https from "node:https";
 
 const job = new CronJob("*/14 * * * *", function () {
-  const base = process.env.FRONTEND_URL;
+  const base = process.env.BACKEND_URL;
   if (!base) return;
   const url = new URL("/revival", base).href;
   const client = url.startsWith("https:") ? https : http;
